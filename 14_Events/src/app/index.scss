@@ -43,10 +43,8 @@ body {
 
   &__additional {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
     height: 180px;
-    overflow-y: scroll;
+    overflow-x: scroll;
     cursor: pointer;
 
     img {

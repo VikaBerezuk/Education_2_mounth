@@ -20,28 +20,28 @@ describe('test all', () => {
     })
 
    describe('paint', () => {
-       test('to de defined', () => {
+       test('should be defined', () => {
            expect(paint).toBeDefined();
        })
-       test('paint', () => {
+       test('paint should be undefined', () => {
            expect(paint(data)).toBeUndefined();
        })
    })
 
    describe('show All Img', () => {
-       test('to de defined', () => {
+       test('should be defined', () => {
            expect(showAllImg).toBeDefined();
        })
-       test('showAllImg', () => {
+       test('showAllImg should be undefined', () => {
            expect(showAllImg(data)).toBeUndefined();
        })
    })
 
    describe('closed', () => {
-       test('to de defined', () => {
+       test('should be defined', () => {
            expect(closed).toBeDefined();
        })
-       test('closed', () => {
+       test('closed should be undefined', () => {
            expect(closed()).toBeUndefined();
        })
    })
