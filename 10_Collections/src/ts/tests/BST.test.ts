@@ -1,6 +1,6 @@
 import {BST} from './../BST';
 
-describe('BTS', () => {
+describe('tests for BTS', () => {
     let testTree;
     beforeEach(() => {
         testTree = new BST();
