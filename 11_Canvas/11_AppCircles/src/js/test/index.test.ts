@@ -22,17 +22,28 @@ describe('init', () => {
     test('test', () => {
         expect(true).toBeTruthy();
     })
-
-    test('init', () => {
+    test('should be defined', () => {
+        expect(init).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof init).toBe("function")
+    })
+    test('init, should be undefined', () => {
         expect(init()).toBeUndefined();
     })
 })
 
 describe('get random', () => {
-    test('getRandomInt', () => {
+    test('should be defined', () => {
+        expect(getRandomInt).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof getRandomInt).toBe("function")
+    })
+    test('should be get randomInt', () => {
         expect(getRandomInt(1,1)).toBe(1);
     })
-    test('getRandomArbitrary', () => {
+    test('\'should be get random arbitrary', () => {
         expect(getRandomArbitrary(1,1)).toBe(1);
     })
 })

@@ -20,19 +20,37 @@ jest.mock('../utils', () => {
 });
 
 describe('Circle', () => {
-    test('Circle', () => {
+    test('should be defined', () => {
+        expect(isCollided).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof isCollided).toBe("function")
+    })
+    test('Circle, should be falsy', () => {
         expect(isCollided({}, {})).toBeFalsy();
     })
 })
 
 describe('rotate', () => {
-    test('rotate', () => {
+    test('should be defined', () => {
+        expect(rotate).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof rotate).toBe("function")
+    })
+    test('rotate, should be {}', () => {
         expect(rotate(1,1)).toStrictEqual({"x": NaN, "y": NaN})
     })
 })
 
 describe('resolveCollision', () => {
-    test('resolveCollision', () => {
+    test('should be defined', () => {
+        expect(resolveCollision).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof resolveCollision).toBe("function")
+    })
+    test('resolveCollision, should be falsy', () => {
         expect(resolveCollision(undefined, undefined)).toBeFalsy();
     })
 })
