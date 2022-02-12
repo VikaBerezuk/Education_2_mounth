@@ -17,30 +17,56 @@ describe('generated', () => {
     test('', () => {
         expect(true).toBeTruthy();
     })
-    test('generated', () => {
+
+    test('should be defined', () => {
+        expect(generated).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof generated).toBe("function")
+    })
+    test('generated should be undefined', () => {
         expect(generated('id', [])).toBeUndefined();
     })
-    test('generated All', () => {
+
+    test('should be defined', () => {
+        expect(generatedAll).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof generatedAll).toBe("function")
+    })
+    test('generated All should be undefined', () => {
         expect(generatedAll([])).toBeUndefined();
     })
-    test('generated All', () => {
+    test('generated All should be undefined', () => {
         const test = {name: 'Anna', balance: '2200', age: '22', document: 'passport', english: 'A2'}
         expect(generatedAll([test, test, test, test, test, test])).toBeUndefined();
     })
 })
 
 describe('canvas', () => {
-    test('', () => {
+    test('test', () => {
         expect(true).toBeTruthy();
     })
-    test('Canvas', () => {
+    test('should be defined', () => {
+        expect(clearCanvas).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof clearCanvas).toBe("function")
+    })
+    test('Canvas should be undefined', () => {
         expect(clearCanvas()).toBeUndefined();
     })
 })
-//addCandidate
+
 describe('add Candidate', () => {
-    test('', () => {
+    test('test', () => {
         expect(true).toBeTruthy();
+    })
+    test('should be defined', () => {
+        expect(addCandidate).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof addCandidate).toBe("function")
     })
     test('add Candidate not information', () => {
         expect(addCandidate([], '', '', '', '', '')).toBeUndefined();

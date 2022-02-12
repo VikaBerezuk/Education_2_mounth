@@ -19,10 +19,23 @@ describe('get promise', () => {
     test('test', () => {
         expect(true).toBeTruthy();
     })
-    test('startRace', () => {
+    test('should be defined', () => {
+        expect(startRace).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof startRace).toBe("function")
+    })
+    test('startRace should be undefined', () => {
         expect(startRace([],  1,1)).toBeUndefined();
     })
-    test('promiseRace', ()=> {
+
+    test('should be defined', () => {
+        expect(promiseRace).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof promiseRace).toBe("function")
+    })
+    test('promiseRace should be undefined', ()=> {
         expect(promiseRace([],[])).toBeUndefined();
     })
 })
