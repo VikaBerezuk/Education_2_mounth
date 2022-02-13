@@ -21,7 +21,7 @@ function addLength(id, number) {
 }
 
 function getReplace(id, getSumbol) {
-    const node = id.textContent.toString().replace(getSumbol, '');
+    const node = id.value.toString().replace(getSumbol, '');
     return node;
 }
 
@@ -31,7 +31,7 @@ function getIncludes(id, arg) {
 }
 
 function deleteLastElements(id) {
-    const node = id.textContent.substring(0, id.textContent.length - 1);
+    const node = id.value.substring(0, id.value.length - 1);
     return node;
 }
 
@@ -41,8 +41,20 @@ function factorial(n) {
 
 function equality() {
     const calculator = getElementId('calculatorValue');
-    calculator.textContent = math.evaluate(calculator.textContent); //eval
+    calculator.value = math.evaluate(calculator.value); //eval
 }
 
+function changeCalc() {
+    const engineering = document.getElementsByClassName('engineering');
 
-module.exports = {addListener, getElementId, addLength, getReplace, getIncludes, deleteLastElements, factorial, equality};
+    for (let i = 0; i < engineering.length; i++) {
+        if( engineering[i].style.display === 'none') {
+            engineering[i].style.display = ' table-cell';
+        } else {
+            engineering[i].style.display = 'none';
+        }
+    }
+}
+
+module.exports = {addListener, getElementId, addLength, getReplace, getIncludes, deleteLastElements, factorial,
+    equality, changeCalc};

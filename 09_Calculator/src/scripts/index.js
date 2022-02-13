@@ -1,16 +1,18 @@
-const {getElementId, addLength, getReplace, getIncludes, deleteLastElements, factorial, addListener} = require("./utils");
-const {equality} = require("./utils");
+require('./../styles/index.scss');
+const {getElementId, addLength, getReplace, getIncludes, deleteLastElements, factorial, addListener,
+    changeCalc, equality
+} = require("./utils");
 
 function addValue(id, input) {
     const button = getElementId(id);
     const calculator = getElementId(input);
 
-    if (calculator.textContent === '0' || calculator.textContent === null || calculator === '0'
-        || calculator.textContent === '+0' || calculator.textContent === '-0'
+    if (calculator.value === '0' || calculator.value === null || calculator === '0'
+        || calculator.value === '+0' || calculator.value === '-0' || calculator === '0'
     ) {
-        calculator.textContent = button.innerText;
+        calculator.value = button.innerText;
     } else {
-        calculator.textContent = calculator.textContent + button.innerText;
+        calculator.value = calculator.value + button.innerText;
     }
 }
 
@@ -21,9 +23,9 @@ function addValueBracket(id, input) {
     const x = addLength(calculator, 1);
     if (x === '('  || x === ')') {
         const result = getReplace(calculator, `${x}`);
-        calculator.textContent = result + button.innerText;
+        calculator.value = result + button.innerText;
     } else {
-        calculator.textContent += button.innerText;
+        calculator.value += button.innerText;
     }
 }
 
@@ -35,9 +37,9 @@ function changeValue(id) {
 
     if (x === '-' || x === '+' || x === '*' || x === '/') {
         const result = getReplace(calculator, `${x}`);
-        calculator.textContent = result + button.value;
+        calculator.value = result + button.value;
     } else {
-        calculator.textContent += button.value;
+        calculator.value += button.value;
     }
 }
 
@@ -48,65 +50,65 @@ function changePositiveToNegative(id) {
     const x = addLength(calculator, 1);
     if (x === '-' || x === '+' || x === '*' || x === '/') {
         const result = getReplace(calculator, `${x}`);
-        if ('+/-' === button.innerText && calculator.textContent >= '0' || '+/-' === button) {
-            calculator.textContent = '-' + result;
+        if ('+/-' === button.innerText && calculator.value >= '0' || '+/-' === button) {
+            calculator.value = '-' + result;
         } else {
-            calculator.textContent = getReplace(calculator, '-');
+            calculator.value = getReplace(calculator, '-');
         }
     }
 
-    if ('+/-' === button.innerText && calculator.textContent >= '0' || '+/-' === button) {
-        calculator.textContent = '-' + calculator.textContent;
+    if ('+/-' === button.innerText && calculator.value >= '0' || '+/-' === button) {
+        calculator.value = '-' + calculator.value;
     } else {
-        calculator.textContent = getReplace(calculator, '-');
+        calculator.value = getReplace(calculator, '-');
     }
 }
 
 function pointValue() {
     const calculator = getElementId('calculatorValue');
     if (getIncludes(calculator, '.') !== '.') {
-        calculator.textContent = calculator.textContent + '.';
+        calculator.value = calculator.value + '.';
     }
 }
 
 function cleaning() {
     const calculator = getElementId('calculatorValue');
-    calculator.textContent = '0';
+    calculator.value = '0';
 }
 
 function back(input) {
     let calculator = getElementId(input);
 
-    calculator.textContent =  deleteLastElements(calculator);
-    if (!calculator.textContent) {
-        calculator.textContent = "0";
+    calculator.value =  deleteLastElements(calculator);
+    if (!calculator.value) {
+        calculator.value = "0";
     }
 }
 
 function pi(id) {
     const calculator = getElementId(id);
-    calculator.textContent = Math.PI;
+    calculator.value = Math.PI;
 }
 
 function getE(id) {
     const calculator = getElementId(id);
-    calculator.textContent = Math.E;
+    calculator.value = Math.E;
 }
 
 function getExp(id) {
     const calculator = getElementId(id);
-    calculator.textContent = Math.exp(calculator.textContent);
+    calculator.value = Math.exp(calculator.value);
 }
 
 function mod(id) {
     const calculator = getElementId(id);
-    calculator.textContent = calculator.textContent + "%";
+    calculator.value = calculator.value + "%";
 }
 
 //Факториал числа
 function fact(input) {
     const calculator = getElementId(input);
-    calculator.textContent = factorial(+eval(calculator.textContent));
+    calculator.value = factorial(+eval(calculator.value));
 }
 //Логарифмы
 function log(name, input) {
@@ -114,13 +116,13 @@ function log(name, input) {
     const calculator = getElementId(input);
 
     if (button.textContent === 'log2' || button === 'log2') {
-        calculator.textContent = Math.log2(eval(calculator.textContent)).toFixed(5); //log2
-    } else if(button.textContent == 'log10' || button === 'log10') {
-        calculator.textContent = Math.log10(eval(calculator.textContent)).toFixed(5); //log10
-    } else if (button.textContent == 'ln' || button === 'ln') {
-        calculator.textContent = Math.log(eval(calculator.textContent)).toFixed(5);//ln
-    } else if(button.textContent = 'log1p' || button === 'log1p') {
-        calculator.textContent = Math.log1p(eval(calculator.textContent)).toFixed(5);//log1p
+        calculator.value = Math.log2(eval(calculator.value)).toFixed(5); //log2
+    } else if(button.textContent === 'log10' || button === 'log10') {
+        calculator.value = Math.log10(eval(calculator.value)).toFixed(5); //log10
+    } else if (button.textContent === 'ln' || button === 'ln') {
+        calculator.value = Math.log(eval(calculator.value)).toFixed(5);//ln
+    } else if(button.textContent === 'log1p' || button === 'log1p') {
+        calculator.value = Math.log1p(eval(calculator.value)).toFixed(5);//log1p
     }
 }
 
@@ -131,34 +133,34 @@ function degree(name, input) {
 
     if(button.textContent === 'xy' && name === 'degree' ||
         button === 'xy' && name === 'degree') {
-        calculator.textContent = calculator.textContent + '**';
+        calculator.value = calculator.value + '**';
     } else if(button.textContent === 'ex' && name === 'degree' ||
         button === 'ex' && name === 'degree'){
-        calculator.textContent = Math.exp(calculator.textContent);
+        calculator.value = Math.exp(calculator.value);
     }
 
     if(name === 'degree1') {
-        calculator.textContent =  1 / calculator.textContent;
+        calculator.value =  1 / calculator.value;
     }
 
     if(name === 'degree2') {
-        calculator.textContent = Math.pow(calculator.textContent, 2);
+        calculator.value = Math.pow(calculator.value, 2);
     }
 
     if(name === 'degree3') {
-        calculator.textContent = Math.pow(calculator.textContent, 3);
+        calculator.value = Math.pow(calculator.value, 3);
     }
 
     if(button.textContent === '10x' || button === '10x') {
-        calculator.textContent =  Math.pow(10, calculator.textContent);
+        calculator.value =  Math.pow(10, calculator.value);
     } else if(button.textContent === '2x' || button === '2x') {
-        calculator.textContent =  Math.pow(2, calculator.textContent);
+        calculator.value =  Math.pow(2, calculator.value);
     }
 }
 
 function getModule(input) {
     const calculator = getElementId(input);
-    calculator.textContent = Math.abs(calculator.textContent);
+    calculator.value = Math.abs(calculator.value);
 }
 
 function changeButton() {
@@ -181,76 +183,67 @@ function changeButton() {
 }
 
 function percent() {
-    const value = getElementId("calculatorValue");
-    if(value.textContent !== '0') {
-        value.textContent = parseFloat(value.textContent)/100;
+    const node = getElementId("calculatorValue");
+    if(node.value !== '0') {
+        node.value = parseFloat(node.value)/100;
     }
 }
 
 function sqrt(context) {
-    const value = getElementId("calculatorValue");
-    if(value.textContent === '0' || value === '0') {
-        value.textContent = context;
+    const node = getElementId("calculatorValue");
+    if(node.value === '0' || node === '0') {
+        node.value = context;
     } else {
-        value.textContent += context;
+        node.value += context;
     }
 }
 
-//sqrt(-
-addListener('fractional', 'click', sqrt.bind(null, '/'));
-addListener('i', 'click', sqrt.bind(null, 'i'));
-addListener('sqrt-', 'click', sqrt.bind(null, 'sqrt(-'));
-addListener('sqrt', 'click', sqrt.bind(null, 'sqrt('));
-//percent
-addListener('percent', 'click', percent);
-//changeButton
-addListener('changeButton', 'click', changeButton);
-//mod
-addListener('mod', 'click', mod.bind(null,'calculatorValue'));
-//getExp exp
-addListener('getExp', 'click', getExp.bind(null,  'calculatorValue'));
-
-//степень ^; 1/x; x2; x3; 10x
-addListener('degree', 'click', degree.bind(null, 'degree', 'calculatorValue'));
-addListener('degree1', 'click', degree.bind(null, 'degree1', 'calculatorValue'));
-addListener('degree2', 'click',  degree.bind(null, 'degree2', 'calculatorValue'));
-addListener('degree3', 'click', degree.bind(null, 'degree3', 'calculatorValue'));
-addListener('degree10', 'click', degree.bind(null, 'degree10', 'calculatorValue'));
-//module||
-addListener('module', 'click', getModule.bind(null,'calculatorValue'));
-
-addListener('factorial', 'click', fact.bind(null, 'calculatorValue'));
-addListener('getE', 'click',  getE.bind(null, 'calculatorValue'));//e
-addListener('pi', 'click',  pi.bind(null, 'calculatorValue'));//pi
-
-addListener('back', 'click', back.bind(null,'calculatorValue'))//back
-addListener('cleaning', 'click', cleaning); // AC
-
-addListener('bracket-left', 'click', addValueBracket.bind(null, 'bracket-left', 'calculatorValue'));//(
-addListener('bracket-right', 'click', addValueBracket.bind(null, 'bracket-right', 'calculatorValue'));//)
-addListener('number0', 'click', addValue.bind(null, 'number0', 'calculatorValue'));
-addListener('number1', 'click', addValue.bind(null, 'number1', 'calculatorValue'));
-addListener('number2', 'click', addValue.bind(null, 'number2', 'calculatorValue'));
-addListener('number3', 'click', addValue.bind(null, 'number3', 'calculatorValue'));
-addListener('number4', 'click', addValue.bind(null, 'number4', 'calculatorValue'));
-addListener('number5', 'click', addValue.bind(null, 'number5', 'calculatorValue'));
-addListener('number6', 'click',  addValue.bind(null, 'number6', 'calculatorValue'));
-addListener('number7', 'click', addValue.bind(null, 'number7', 'calculatorValue'));
-addListener('number8', 'click', addValue.bind(null, 'number8', 'calculatorValue'));
-addListener('number9', 'click', addValue.bind(null, 'number9', 'calculatorValue'));
-
-addListener('point', 'click', pointValue.bind(null,'point'));// ,
-
-addListener('change', 'click', changePositiveToNegative.bind(null, 'change'));// +/-
-
-addListener('plus', 'click',  changeValue.bind(null, 'plus'));//+
-addListener('minus', 'click', changeValue.bind(null,'minus'));//-
-addListener('multiply', 'click', changeValue.bind(null, 'multiply'));//*
-addListener('division', 'click', changeValue.bind(null,'division'));// /
-//=
-addListener('equality', 'click', equality.bind(null, 'equality'));
-addListener('lg', 'click', log.bind(null, 'lg','calculatorValue'));
-addListener('ln', 'click', log.bind(null, 'ln','calculatorValue'));
+addListener('calculator', 'click', (event) => {
+    if (event.target.id === 'equality') {
+        equality('equality');
+    } else if (event.target.id === 'changeCalc') {
+        changeCalc();
+    } else if (event.target.id === 'back') {
+        back('calculatorValue');
+    } else if (event.target.id === 'cleaning') {
+        cleaning();
+    } else if (event.target.id === 'point') {
+        pointValue('point');
+    } else if (event.target.id === 'plus' || event.target.id === 'minus' ||
+        event.target.id === 'multiply' || event.target.id === 'division') {
+        changeValue(event.target.id);
+    } else if (event.target.id === 'change') {
+        changePositiveToNegative('change');
+    } else if (event.target.id === 'bracket-left' || event.target.id === 'bracket-right') {
+        addValueBracket(event.target.id, 'calculatorValue');
+    } else if (event.target.id === 'degree' || event.target.id === 'degree1' ||
+        event.target.id === 'degree2' || event.target.id === 'degree3' || event.target.id === 'degree10') {
+        degree(event.target.id, 'calculatorValue');
+    } else if (event.target.id === 'lg' || event.target.id === 'ln') {
+        log(event.target.id, 'calculatorValue');
+    }  else if (event.target.id === 'fractional' || event.target.id === 'i' ||
+        event.target.id === 'sqrt(' || event.target.id === 'sqrt(-') {
+        sqrt(event.target.id);
+    } else if (event.target.id === 'percent') {
+        percent();
+    } else if (event.target.id === 'changeButton') {
+        changeButton();
+    } else if (event.target.id === 'mod') {
+        mod('calculatorValue');
+    } else if (event.target.id === 'getExp') {
+        getExp('calculatorValue');
+    } else if (event.target.id === 'module') {
+        getModule('calculatorValue');
+    } else if (event.target.id === 'factorial') {
+        fact('calculatorValue');
+    } else if (event.target.id === 'getE') {
+        getE('calculatorValue');
+    } else if (event.target.id === 'pi') {
+        pi('calculatorValue');
+    } else {
+        addValue(event.target.id, 'calculatorValue');
+    }
+})
 
 module.exports = { addValueBracket, addValue, changeValue, changePositiveToNegative,
     pointValue, cleaning, back, pi, getE, getExp, mod, fact, log, degree, getModule, changeButton,

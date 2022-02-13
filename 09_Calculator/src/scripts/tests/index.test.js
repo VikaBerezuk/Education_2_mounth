@@ -12,7 +12,8 @@ jest.mock('../utils', () => {
         getIncludes: jest.fn(() => '.'),
         deleteLastElements: jest.fn(() => '0'),
         factorial: jest.fn(() => '2'),
-        equality: jest.fn(() => '1')
+        equality: jest.fn(() => '1'),
+        changeCalc: jest.fn()
     };
 });
 
@@ -25,14 +26,15 @@ describe('add value', () => {
     test('should be function', () => {
         expect(addValue).toBeDefined();
     })
+    test('should be function', () => {
+        expect(typeof addValue).toBe("function")
+    })
     test('should be function, with parameters === 0', () => {
-        addLength
-            .mockImplementationOnce(() => '3')
         expect(addValue('0', '0')).toBeUndefined();
     })
     test('should be function, with parameters === "(" and "+"' , () => {
         getElementId.mockImplementationOnce(() => '0')
-            .mockImplementationOnce(() => '0');
+            .mockImplementationOnce(() => '3');
         expect(addValue('0', '2')).toBeUndefined();
     })
 })
@@ -40,6 +42,9 @@ describe('add value', () => {
 describe('add Value Bracket', () => {
     test('should be function', () => {
         expect(addValueBracket).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof addValueBracket).toBe("function")
     })
     test('should be function,  with parameters === (', () => {
         addLength
@@ -55,6 +60,9 @@ describe('change Value', () => {
     test('should be function', () => {
         expect(changeValue).toBeDefined()
     })
+    test('should be function', () => {
+        expect(typeof changeValue).toBe("function")
+    })
     test('should be function,  with parameters === +', () => {
         addLength
             .mockImplementationOnce(() => '+');
@@ -68,6 +76,9 @@ describe('change Value', () => {
 describe('change Positive To Negative', () => {
     test('should be function', () => {
         expect(changePositiveToNegative).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof changePositiveToNegative).toBe("function")
     })
     test('should be function,  with parameters === +/-', () => {
         getElementId
@@ -95,6 +106,9 @@ describe('point Value', () => {
     test('should be function ', () => {
         expect(pointValue).toBeDefined();
     })
+    test('should be function', () => {
+        expect(typeof pointValue).toBe("function")
+    })
     test('should be function,  with parameters === "12.1"', () => {
         getElementId.mockImplementationOnce(() => '12.1');
         getIncludes.mockImplementationOnce(() => true);
@@ -114,6 +128,9 @@ describe('cleaning', () => {
     test('should be function', () => {
         expect(cleaning).toBeDefined()
     })
+    test('should be function', () => {
+        expect(typeof cleaning).toBe("function")
+    })
     test('should be function, cleaning', () => {
         expect(cleaning()).toBeUndefined();
     })
@@ -122,6 +139,9 @@ describe('cleaning', () => {
 describe('back', () => {
     test('should be function', () => {
         expect(back).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof back).toBe("function")
     })
     test('should be function, back', () => {
         deleteLastElements.mockImplementationOnce(() => '1');
@@ -137,6 +157,9 @@ describe('pi', () => {
     test('should be function', () => {
         expect(pi).toBeDefined()
     })
+    test('should be function', () => {
+        expect(typeof pi).toBe("function")
+    })
     test('should be function, pi', () => {
         expect(pi('1')).toBeUndefined();
     })
@@ -145,6 +168,9 @@ describe('pi', () => {
 describe('get E', () => {
     test('should be function', () => {
         expect(getE).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof getE).toBe("function")
     })
     test('should be function, get E', () => {
         expect(getE('1')).toBeUndefined();
@@ -155,6 +181,9 @@ describe('get Exp', () => {
     test('should be function', () => {
         expect(getExp).toBeDefined()
     })
+    test('should be function', () => {
+        expect(typeof getExp).toBe("function")
+    })
     test('should be function, get Exp', () => {
         expect(getExp('1')).toBeUndefined();
     })
@@ -163,6 +192,9 @@ describe('get Exp', () => {
 describe('module', () => {
     test('should be function', () => {
         expect(mod).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof mod).toBe("function")
     })
     test('should be function, get module', () => {
         expect(mod('-1')).toBeUndefined();
@@ -173,6 +205,9 @@ describe('factorial', () => {
     test('should be function', () => {
         expect(fact).toBeDefined()
     })
+    test('should be function', () => {
+        expect(typeof fact).toBe("function")
+    })
     test('should be function, get factorial', () => {
         expect(fact('1')).toBeUndefined();
     })
@@ -181,6 +216,9 @@ describe('factorial', () => {
 describe('log', () => {
     test('should be function', () => {
         expect(log).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof log).toBe("function")
     })
     test('should be function, log2', () => {
         getElementId.mockImplementationOnce(() => 'log2');
@@ -199,10 +237,13 @@ describe('log', () => {
         expect(log('log1p', '1')).toBeUndefined();
     })
 })
-//degree
+
 describe('degree', () => {
     test('should be function, ', () => {
         expect(degree).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof degree).toBe("function")
     })
     test('should be function, 10x', () => {
         getElementId.mockImplementationOnce(() => '10x');
@@ -238,6 +279,9 @@ describe('module', () => {
     test('add', () => {
         expect(getModule).toBeDefined()
     })
+    test('should be function', () => {
+        expect(typeof getModule).toBe("function")
+    })
     test('module', () => {
         expect(getModule('-1')).toBeUndefined();
     })
@@ -247,24 +291,32 @@ describe('change Button', () => {
     test('add', () => {
         expect(changeButton).toBeDefined()
     })
+    test('should be function', () => {
+        expect(typeof changeButton).toBe("function")
+    })
     test('change Button', () => {
         expect(changeButton('-1')).toBeUndefined();
     })
 })
 
-//percent
 describe('percent', () => {
     test('percent', () => {
         expect(percent).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof percent).toBe("function")
     })
     test('percent', () => {
         expect(percent()).toBeUndefined();
     })
 })
-//sqrt
+
 describe('sqrt', () => {
     test('sqrt', () => {
         expect(sqrt).toBeDefined()
+    })
+    test('should be function', () => {
+        expect(typeof sqrt).toBe("function")
     })
     test('sqrt', () => {
         expect(sqrt('i')).toBeUndefined();

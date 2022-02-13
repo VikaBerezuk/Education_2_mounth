@@ -1,7 +1,22 @@
 .calculator {
+  position: relative;
   background: black;
   padding: 15px;
   box-shadow: 0 0 1px 1px black;
+
+  .rotate {
+    position: absolute;
+    top: 4%;
+    right: 6%;
+    padding: 10px;
+    z-index: 1;
+    cursor: pointer;
+
+    &:hover {
+      transform: rotate(120deg);
+      transition-duration: .8s;
+    }
+  }
 
   td {
     width: 70px;
@@ -50,6 +65,7 @@
   }
 }
 
+input,
 button {
   background: white;
   width: 100%;
@@ -62,6 +78,7 @@ button {
 
   &:hover {
     background: linear-gradient(to top left, lightblue, aliceblue);
+    color: black;
     box-shadow: 0 0 2px 2px black;
     font-weight: 600;
   }
@@ -69,8 +86,4 @@ button {
 
 .engineering {
   display: none;
-
- @media (min-width: 768px) {
-   display: table-cell;
- }
 }
