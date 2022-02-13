@@ -16,12 +16,12 @@ export const documentVisa: string[] = [
     'password, insurance'
 ]; //80 %
 export const levelEnglish: string[] = ['B1', 'B2', 'C1', 'A1', 'A2', 'A1', 'A2', 'A1', 'A2']//30%
-export const canvasSize: { x: number, y: number }[] = [
-    {x: 40, y: 50},
-    {x: 120, y: 50},
-    {x: 200, y: 50},
-    {x: 280, y: 50},
-    {x: 360, y: 50}
-];
+// export const canvasSize: { x: number, y: number }[] = [
+//     {x: 40, y: 50},
+//     {x: 120, y: 50},
+//     {x: 200, y: 50},
+//     {x: 280, y: 50},
+//     {x: 360, y: 50}
+// ];
 
 export const arrCandidate: User[] = [];
