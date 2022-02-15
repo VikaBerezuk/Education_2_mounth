@@ -1,8 +1,8 @@
-1. Что б подключить node_modulesв терминале вызовите команду "yarn install"
+Application “Get Visa” (Promises)
+
+1. Что б подключить node_modules в терминале вызовите команду "yarn install"
 2. Что б проверить тесты в терминале вызовите команду "node test"
 3. Что б запустить приложение в терминале вызовите команду "node start"
-
-Application “Get Visa” (Promises)
 
 Задание рассчитано на изучение Promise (методов race, all, then, catch).
 Также используется canvas, setTimeout, setInterval.
